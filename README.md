@@ -236,3 +236,42 @@ Provides clear, standardized API docs for developers. Supports both REST (CRUD o
 
 ## **7. Database Optimizations**  
 Uses indexing and caching (Redis) to speed up data retrieval (e.g., property searches). Reduces server load and enhances scalability for high-traffic scenarios.  
+
+
+# 🔒 API Security  
+
+To ensure the safety and integrity of the Airbnb Clone platform, the following security measures will be implemented:  
+
+## **1. Authentication (JWT/OAuth2)**  
+- **Implementation**: JSON Web Tokens (JWT) for stateless user sessions, with OAuth2 support for third-party logins (e.g., Google, Facebook).  
+- **Why It Matters**: Prevents unauthorized access to user accounts and protects sensitive actions (e.g., bookings, payments).  
+
+## **2. Authorization (Role-Based Access Control)**  
+- **Implementation**: Fine-grained permissions (e.g., guests can book properties, hosts can manage listings, admins can moderate content).  
+- **Why It Matters**: Ensures users only access features/data they’re permitted to (e.g., hosts cannot alter payment records).  
+
+## **3. Rate Limiting (Redis-backed Throttling)**  
+- **Implementation**: Limits API calls (e.g., 100 requests/minute) to prevent brute-force attacks and DDoS attempts.  
+- **Why It Matters**: Protects server resources and mitigates abuse (e.g., spammy property searches or fake account creation).  
+
+## **4. Data Encryption (HTTPS/TLS)**  
+- **Implementation**: All data in transit encrypted via HTTPS; sensitive fields (e.g., passwords, payment details) hashed/encrypted at rest.  
+- **Why It Matters**: Safeguards user data from interception (e.g., login credentials, credit card numbers).  
+
+## **5. Payment Security (PCI DSS Compliance)**  
+- **Implementation**: Uses tokenized payments (e.g., Stripe/PayPal) to avoid storing raw card details; adheres to PCI standards.  
+- **Why It Matters**: Prevents financial fraud and ensures trust in transactions.  
+
+## **6. Input Validation & Sanitization**  
+- **Implementation**: Rejects malformed inputs (e.g., SQL injection, XSS attempts) via Django’s built-in validators and GraphQL query depth limiting.  
+- **Why It Matters**: Blocks common attack vectors that could compromise databases or user sessions.  
+
+---
+
+## **Why Security is Crucial for Each Area**  
+- **User Data**: Breaches could lead to identity theft or fraud.  
+- **Payments**: Unsecured transactions risk financial losses and legal penalties.  
+- **Property Listings/Bookings**: Unauthorized edits could disrupt business operations.  
+- **Reviews**: Fake or manipulated reviews harm platform credibility.  
+
+Security is woven into every layer of the API to uphold privacy, compliance (e.g., GDPR), and user trust.  
