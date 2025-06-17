@@ -213,3 +213,26 @@ The database schema for the Airbnb Clone project consists of the following key e
 - A **Payment** is linked to one **Booking** (one-to-one).
 
 ---
+
+# 🌟 Feature Breakdown
+
+## **1. User Management**  
+Enables secure user registration, authentication, and profile management. Ensures only authorized users can access sensitive features like bookings and property listings, while protecting personal data.  
+
+## **2. Property Management**  
+Allows hosts to create, update, and delete property listings with details like location, pricing, and amenities. Provides guests with searchable, filterable property data for informed decisions.  
+
+## **3. Booking System**  
+Facilitates property reservations with check-in/out dates and pricing calculations. Ensures seamless scheduling and conflict detection to prevent double bookings.  
+
+## **4. Payment Processing**  
+Integrates secure transactions (e.g., Stripe/PayPal) to handle booking payments. Tracks payment statuses and refunds, ensuring financial reliability for hosts and guests.  
+
+## **5. Review System**  
+Lets guests rate and review properties post-stay. Builds trust through transparent feedback and helps hosts improve their offerings.  
+
+## **6. API Documentation (OpenAPI/GraphQL)**  
+Provides clear, standardized API docs for developers. Supports both REST (CRUD operations) and GraphQL (flexible queries) to cater to different client needs.  
+
+## **7. Database Optimizations**  
+Uses indexing and caching (Redis) to speed up data retrieval (e.g., property searches). Reduces server load and enhances scalability for high-traffic scenarios.  
