@@ -275,3 +275,44 @@ To ensure the safety and integrity of the Airbnb Clone platform, the following s
 - **Reviews**: Fake or manipulated reviews harm platform credibility.  
 
 Security is woven into every layer of the API to uphold privacy, compliance (e.g., GDPR), and user trust.  
+
+
+# 🛠️ CI/CD Pipeline
+
+## Overview
+Our CI/CD pipeline automates the process of integrating code changes, testing them, and deploying to production environments. This ensures rapid, reliable delivery of new features while maintaining high code quality.
+
+## Key Components
+
+### Continuous Integration (CI)
+- **Automated Testing**: Runs unit, integration, and security tests on every code commit
+- **Code Quality Checks**: Enforces coding standards and best practices
+- **Build Verification**: Ensures code can be successfully built and packaged
+
+### Continuous Deployment (CD)
+- **Staging Deployment**: Automatically deploys to staging environment after successful tests
+- **Production Deployment**: Manual approval for production deployments
+- **Rollback Capability**: Quickly revert problematic deployments
+
+## Tools We Use
+| Tool | Purpose |
+|------|---------|
+| GitHub Actions | CI/CD workflow automation |
+| Docker | Containerization for consistent environments |
+| AWS ECS | Container orchestration for deployment |
+| SonarQube | Static code analysis and quality gates |
+| Prometheus | Monitoring deployment health |
+
+## Pipeline Stages
+1. **Code Commit** - Triggers the pipeline on push to main branch
+2. **Build** - Creates Docker container with application
+3. **Test** - Runs automated test suites
+4. **Deploy to Staging** - Pushes to staging environment
+5. **Manual Approval** - Requires human verification
+6. **Deploy to Production** - Releases to live environment
+
+## Benefits
+- **Faster Releases**: Deploy features and fixes in minutes instead of days
+- **Higher Quality**: Catch bugs before they reach production
+- **Consistency**: Eliminate environment differences between dev and prod
+- **Scalability**: Easily handle increased load with containerized architecture
