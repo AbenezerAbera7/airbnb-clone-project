@@ -110,7 +110,7 @@ While the PO provides the product vision and focuses on customer needs, the BA d
 Each role brings unique expertise to the project, ensuring a balance of technical excellence, user satisfaction, and efficient delivery. Collaboration between these roles is key to building successful software products.
 
 
-## 🛠️ Technology Stack
+# 🛠️ Technology Stack
 
 The project leverages the following technologies to build a scalable and efficient backend for the Airbnb Clone:
 
