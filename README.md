@@ -108,3 +108,30 @@ While the PO provides the product vision and focuses on customer needs, the BA d
 
 ### Why These Roles Matter
 Each role brings unique expertise to the project, ensuring a balance of technical excellence, user satisfaction, and efficient delivery. Collaboration between these roles is key to building successful software products.
+
+
+## 🛠️ Technology Stack
+
+The project leverages the following technologies to build a scalable and efficient backend for the Airbnb Clone:
+
+### **Backend Framework**  
+- **Django**: A high-level Python web framework used to build the RESTful API. It provides built-in security, ORM, and scalability.  
+- **Django REST Framework (DRF)**: Extends Django to simplify RESTful API development, offering tools for serialization, authentication, and CRUD operations.  
+
+### **Database**  
+- **PostgreSQL**: A robust relational database for structured data storage, ensuring ACID compliance and performance for user, property, and booking data.  
+
+### **API Querying**  
+- **GraphQL**: Enables flexible and efficient data querying, allowing clients to request only the needed data (e.g., nested property-booking details in a single query).  
+
+### **Asynchronous Tasks**  
+- **Celery**: Handles background tasks (e.g., payment processing, email notifications) asynchronously to improve responsiveness.  
+- **Redis**: Serves as both a message broker for Celery and a caching layer to reduce database load (e.g., caching frequent property listings).  
+
+### **DevOps & Deployment**  
+- **Docker**: Containerizes the application for consistent environments across development, testing, and production.  
+- **CI/CD Pipelines**: Automates testing and deployment (e.g., GitHub Actions/GitLab CI) to ensure code quality and rapid releases.  
+
+### **Optimizations**  
+- **Database Indexing**: Accelerates query performance for frequently accessed data (e.g., user searches for properties).  
+- **Caching (Redis)**: Stores temporary data (e.g., session tokens, API responses) to reduce latency.  
