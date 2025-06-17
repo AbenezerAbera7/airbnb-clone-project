@@ -114,24 +114,102 @@ Each role brings unique expertise to the project, ensuring a balance of technica
 
 The project leverages the following technologies to build a scalable and efficient backend for the Airbnb Clone:
 
-### **Backend Framework**  
+## **Backend Framework**  
 - **Django**: A high-level Python web framework used to build the RESTful API. It provides built-in security, ORM, and scalability.  
 - **Django REST Framework (DRF)**: Extends Django to simplify RESTful API development, offering tools for serialization, authentication, and CRUD operations.  
 
-### **Database**  
+## **Database**  
 - **PostgreSQL**: A robust relational database for structured data storage, ensuring ACID compliance and performance for user, property, and booking data.  
 
-### **API Querying**  
+## **API Querying**  
 - **GraphQL**: Enables flexible and efficient data querying, allowing clients to request only the needed data (e.g., nested property-booking details in a single query).  
 
-### **Asynchronous Tasks**  
+## **Asynchronous Tasks**  
 - **Celery**: Handles background tasks (e.g., payment processing, email notifications) asynchronously to improve responsiveness.  
 - **Redis**: Serves as both a message broker for Celery and a caching layer to reduce database load (e.g., caching frequent property listings).  
 
-### **DevOps & Deployment**  
+## **DevOps & Deployment**  
 - **Docker**: Containerizes the application for consistent environments across development, testing, and production.  
 - **CI/CD Pipelines**: Automates testing and deployment (e.g., GitHub Actions/GitLab CI) to ensure code quality and rapid releases.  
 
-### **Optimizations**  
+## **Optimizations**  
 - **Database Indexing**: Accelerates query performance for frequently accessed data (e.g., user searches for properties).  
 - **Caching (Redis)**: Stores temporary data (e.g., session tokens, API responses) to reduce latency.  
+
+
+# 🗃️ Database Design
+
+The database schema for the Airbnb Clone project consists of the following key entities and relationships:
+
+## **1. Users**
+**Fields:**
+- `id` (Primary Key): Unique identifier for each user.
+- `username`: Unique username for authentication.
+- `email`: User's email address (used for notifications).
+- `password_hash`: Securely stored hashed password.
+- `role`: Distinguishes between guests, hosts, and admins.
+
+**Relationships:**
+- A **User** can own multiple **Properties** (one-to-many).
+- A **User** can make multiple **Bookings** (one-to-many).
+- A **User** can write multiple **Reviews** (one-to-many).
+
+---
+
+## **2. Properties**
+**Fields:**
+- `id` (Primary Key): Unique identifier for each property.
+- `title`: Name/description of the property (e.g., "Beachfront Villa").
+- `location`: Geographic coordinates or address.
+- `price_per_night`: Cost to book the property.
+- `host_id` (Foreign Key): References the **User** who owns the property.
+
+**Relationships:**
+- A **Property** belongs to one **User** (host) (many-to-one).
+- A **Property** can have multiple **Bookings** (one-to-many).
+- A **Property** can have multiple **Reviews** (one-to-many).
+
+---
+
+## **3. Bookings**
+**Fields:**
+- `id` (Primary Key): Unique identifier for each booking.
+- `check_in_date`: Start date of the booking.
+- `check_out_date`: End date of the booking.
+- `total_price`: Calculated cost (price_per_night × duration).
+- `guest_id` (Foreign Key): References the **User** who made the booking.
+- `property_id` (Foreign Key): References the booked **Property**.
+
+**Relationships:**
+- A **Booking** belongs to one **User** (guest) (many-to-one).
+- A **Booking** belongs to one **Property** (many-to-one).
+- A **Booking** can have one **Payment** (one-to-one).
+
+---
+
+### **4. Reviews**
+**Fields:**
+- `id` (Primary Key): Unique identifier for each review.
+- `rating`: Numeric score (e.g., 1–5 stars).
+- `comment`: Text feedback from the guest.
+- `guest_id` (Foreign Key): References the **User** who wrote the review.
+- `property_id` (Foreign Key): References the reviewed **Property**.
+
+**Relationships:**
+- A **Review** belongs to one **User** (guest) (many-to-one).
+- A **Review** belongs to one **Property** (many-to-one).
+
+---
+
+## **5. Payments**
+**Fields:**
+- `id` (Primary Key): Unique identifier for each payment.
+- `amount`: Transaction amount.
+- `status`: Payment state (e.g., "pending," "completed," "failed").
+- `booking_id` (Foreign Key): References the associated **Booking**.
+- `payment_method`: Stripe/PayPal/etc. identifier.
+
+**Relationships:**
+- A **Payment** is linked to one **Booking** (one-to-one).
+
+---
